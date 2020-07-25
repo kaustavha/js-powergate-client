@@ -119,10 +119,10 @@ async function exampleCode() {
 
   // cache data in IPFS in preparation to store it using FFS
   const buffer = fs.readFileSync(`path/to/a/file`)
-  const { cid } = await pow.ffs.stage(buffer)
+  const { cid } = await pow.ffs.addToHot(buffer)
 
   // store the data in FFS using the default storage configuration
-  const { jobId } = await pow.ffs.pushStorageConfig(cid)
+  const { jobId } = await pow.ffs.pushConfig(cid)
 
   // watch the FFS job status to see the storage process progressing
   const jobsCancel = pow.ffs.watchJobs((job) => {
